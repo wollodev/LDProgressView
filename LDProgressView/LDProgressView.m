@@ -107,13 +107,15 @@
     [roundedRectangleNegativePath appendPath:roundedRect];
     roundedRectangleNegativePath.usesEvenOddFillRule = YES;
 
-    CGSize shadowOffset = CGSizeMake(0.5, 1);
-    CGContextSaveGState(context);
-    CGFloat xOffset = shadowOffset.width + round(rect.size.width);
-    CGFloat yOffset = shadowOffset.height;
-    CGContextSetShadowWithColor(context,
-            CGSizeMake(xOffset + copysign(0.1, xOffset), yOffset + copysign(0.1, yOffset)), 5, [[UIColor blackColor] colorWithAlphaComponent:0.7].CGColor);
-
+    if ([self.showShadow boolValue]) {
+        CGSize shadowOffset = CGSizeMake(0.5, 1);
+        CGContextSaveGState(context);
+        CGFloat xOffset = shadowOffset.width + round(rect.size.width);
+        CGFloat yOffset = shadowOffset.height;
+        CGContextSetShadowWithColor(context,
+                                    CGSizeMake(xOffset + copysign(0.1, xOffset), yOffset + copysign(0.1, yOffset)), 5, [[UIColor blackColor] colorWithAlphaComponent:0.7].CGColor);
+    }
+    
     [roundedRect addClip];
     CGAffineTransform transform = CGAffineTransformMakeTranslation(-round(rect.size.width), 0);
     [roundedRectangleNegativePath applyTransform:transform];

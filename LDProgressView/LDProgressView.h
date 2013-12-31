@@ -22,6 +22,7 @@ typedef enum {
 @property (nonatomic, strong) UIColor *color UI_APPEARANCE_SELECTOR;
 @property (nonatomic, strong) UIColor *background UI_APPEARANCE_SELECTOR;
 
+@property (nonatomic, strong) NSNumber *showShadow UI_APPEARANCE_SELECTOR;
 @property (nonatomic, strong) NSNumber *flat UI_APPEARANCE_SELECTOR;
 @property (nonatomic, strong) NSNumber *animate UI_APPEARANCE_SELECTOR;
 @property (nonatomic, strong) NSNumber *showStroke UI_APPEARANCE_SELECTOR;
