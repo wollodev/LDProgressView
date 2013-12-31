@@ -44,6 +44,7 @@
 
 - (void)initialize {
     self.backgroundColor = [UIColor clearColor];
+    self.transform = CGAffineTransformMakeRotation(M_PI);
 }
 
 - (void)setAnimate:(NSNumber *)animate {
@@ -56,7 +57,7 @@
 }
 
 - (void)setProgress:(CGFloat)progress {
-    self.progressToAnimateTo = progress;
+    self.progressToAnimateTo = 1 - progress; //invert progress, because its rotated 
     if (self.animationTimer) {
         [self.animationTimer invalidate];
     }

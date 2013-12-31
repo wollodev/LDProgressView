@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 	s.name = 'LDProgressView'
-	s.version = '1.2'
-	s.summary = 'A configurable progress view with a single color setter written in CoreGraphics + shadow-option'
+	s.version = '1.2.1'
+	s.summary = 'A configurable progress view with a single color setter written in CoreGraphics + shadow-option + invert progressview and progress'
 	s.description = 'A flat or gradient progress view with a simple color setter and customizable options written in pure Core Graphics.'
 	s.homepage = 'https://github.com/wollodev/LDProgressView'
 	s.license = {:type => 'MIT', :file => 'LICENSE'}
