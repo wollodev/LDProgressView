@@ -57,11 +57,15 @@
 }
 
 - (void)setProgress:(CGFloat)progress {
-    self.progressToAnimateTo = 1 - progress; //invert progress, because its rotated 
-    if (self.animationTimer) {
-        [self.animationTimer invalidate];
+    _progress = progress;
+    if (progress < 0.001) {
+        _progress = 0.001;
     }
-    self.animationTimer = [NSTimer scheduledTimerWithTimeInterval:0.008 target:self selector:@selector(incrementAnimatingProgress) userInfo:nil repeats:YES];
+    [self setNeedsDisplay];
+//    if (self.animationTimer) {
+//        [self.animationTimer invalidate];
+//    }
+//    self.animationTimer = [NSTimer scheduledTimerWithTimeInterval:0.008 target:self selector:@selector(incrementAnimatingProgress) userInfo:nil repeats:YES];
 }
 
 - (void)incrementAnimatingProgress {
@@ -137,7 +141,7 @@
 }
 
 - (void)drawProgress:(CGContextRef)context withFrame:(CGRect)frame {
-    CGRect rectToDrawIn = CGRectMake(frame.origin.x, frame.origin.y, frame.size.width * self.progress, frame.size.height);
+    CGRect rectToDrawIn = CGRectMake(frame.origin.x, frame.origin.y, frame.size.width * (1.0-self.progress), frame.size.height);
     CGRect insetRect = CGRectInset(rectToDrawIn, self.progress > 0.03 ? 0.5 : -0.5, 0.5);
     if (![self.showText boolValue]) {
         insetRect = rectToDrawIn;
